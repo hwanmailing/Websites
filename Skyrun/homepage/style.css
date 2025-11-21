@@ -1,0 +1,339 @@
+/* Additional custom styles for the game homepage */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6366f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+}
+
+/* Enhanced button hover effects */
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-hover-effect:hover::before {
+    left: 100%;
+}
+
+/* Image slider enhancements */
+#imageSlider {
+    position: relative;
+}
+
+/* Slider container transitions */
+#sliderContainer {
+    transition: transform 0.5s ease-in-out;
+}
+
+#sliderContainer.transitioning {
+    transition: transform 0.5s ease-in-out;
+}
+
+#imageSlider img {
+    transition: transform 0.2s ease;
+    height: auto;
+    max-height: 500px;
+    width: 100%;
+}
+
+#imageSlider:hover img {
+    transform: scale(1.02);
+}
+
+/* Navigation arrow hover effects */
+#prevBtn:hover, #nextBtn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Dot indicator animations */
+.dot {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+    background-color: #8b5cf6 !important;
+}
+
+.dot.active {
+    background-color: #6366f1 !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* 강제로 active 상태 스타일 적용 */
+#imageSlider .dot.active {
+    background-color: #6366f1 !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5) !important;
+}
+
+/* 기본 인디케이터 스타일 강제 적용 */
+#imageSlider .dot {
+    background-color: #6b7280 !important; /* bg-gray-600 */
+}
+
+#imageSlider .dot.active {
+    background-color: #6366f1 !important; /* game-primary */
+}
+
+/* Form input focus effects */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* iPhone Frame Design */
+.iphone-frame {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 400px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border-radius: 30px;
+    padding: 8px;
+    box-shadow: 
+        0 0 0 2px #000,
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: scale(0.8);
+    transform-origin: center;
+    /* Maintain aspect ratio */
+    aspect-ratio: 2.25 / 1;
+}
+
+/* iPhone container adjustments for mobile */
+@media (max-width: 768px) {
+    .iphone-frame {
+        margin: 0 auto;
+    }
+}
+
+/* Game Characters Section */
+.character-card {
+    background: linear-gradient(145deg, #1f2937, #374151);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.character-card:hover {
+    transform: translateY(-10px);
+    border-color: #6366f1;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+.character-sprite {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-size: 5120px 512px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+/* Responsive character grid */
+@media (max-width: 768px) {
+    .character-sprite {
+        width: 150px;
+        height: 150px;
+        background-size: 3840px 3840px;
+    }
+    
+    .character-card {
+        padding: 1.5rem;
+    }
+}
+
+
+
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+}
+
+.iphone-home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Video player enhancements */
+#heroVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+}
+
+/* Video poster and loading states */
+#heroVideo[poster] {
+    object-fit: cover;
+}
+
+#heroVideo:not([poster]) {
+    background: linear-gradient(45deg, #1f2937, #374151, #4b5563);
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Video loading animation */
+.video-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: loading-shine 2s infinite;
+}
+
+@keyframes loading-shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .iphone-frame {
+        max-width: 800px;
+        height: 356px;
+        transform: scale(0.8);
+        padding: 1%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        background: rgba(17, 24, 39, 0.95);
+        backdrop-filter: blur(10px);
+    }
+    
+    #imageSlider img {
+        height: auto;
+        max-height: 400px;
+        width: 100%;
+    }
+    
+    .iphone-frame {
+        max-width: 90vw;
+        height: calc(90vw / 2.25);
+        transform: scale(0.9);
+        padding: 6px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .iphone-frame {
+        max-width: 95vw;
+        height: calc(95vw / 2.25);
+        transform: scale(0.95);
+        padding: 4px;
+        margin: 0 5px;
+    }
+}
+
+/* Loading animation for images */
+.image-loading {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Enhanced card hover effects */
+.hover-card {
+    transition: all 0.2s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient text animation */
+.gradient-text {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}

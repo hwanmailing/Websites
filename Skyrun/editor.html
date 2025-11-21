@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ditor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .toolbar {
+            display: flex;
+            padding: 10px;
+            background-color: #2d2d2d;
+            color: white;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toolbar .spacer {
+            flex: 1;
+        }
+
+        .project-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-select {
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #3d3d3d;
+            color: white;
+            border: 1px solid #555;
+            outline: none;
+            min-width: 150px;
+        }
+
+        .project-select option {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 5px;
+        }
+
+        .toolbar select {
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #3d3d3d;
+            color: white;
+            border: 1px solid #555;
+            outline: none;
+            min-width: 100px;
+        }
+
+        .toolbar select option {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 5px;
+        }
+
+        .toolbar button {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #3d3d3d;
+            color: white;
+            border: 1px solid #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .toolbar button.icon-button {
+            padding: 5px;
+            width: 28px;
+            height: 28px;
+            justify-content: center;
+        }
+
+        .toolbar button:hover {
+            background-color: #4d4d4d;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #252526;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: width 0.3s;
+        }
+
+
+        .sidebar.active {
+            width: 250px;
+        }
+
+        .resize-handle {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: ew-resize;
+            background-color: #3d3d3d;
+        }
+
+        .resize-handle:hover {
+            background-color: #0078d4;
+        }
+
+        .sidebar-header {
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #3d3d3d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-toolbar {
+            display: flex;
+            gap: 5px;
+        }
+
+        .file-tree {
+            flex: 1;
+            overflow: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .file-tree-item {
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            user-select: none;
+            border-radius: 3px;
+        }
+
+        .file-tree-item:hover {
+            background-color: #2d2d2d;
+        }
+
+        .file-tree-item.dragging {
+            opacity: 0.5;
+        }
+
+        .file-tree-item.drag-over {
+            background-color: #3d3d3d;
+            border: 1px dashed #0078d4;
+        }
+
+        .folder-content {
+            margin-left: 24px;
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .folder-content.expanded {
+            display: flex;
+        }
+
+        .folder-icon {
+            width: 16px;
+            text-align: center;
+            transition: transform 0.2s;
+            font-size: 10px;
+        }
+
+        .folder-icon.expanded {
+            transform: rotate(90deg);
+        }
+
+        .file-tree-item i.fas.fa-folder {
+            color: #dcb67a;
+        }
+
+        .file-tree-item i.fas.fa-file {
+            color: #8fbcbb;
+            margin-left: 16px;
+        }
+
+        .editor-container {
+            flex: 1;
+            height: 100%;
+        }
+
+        #monaco-editor {
+            width: 100%;
+            height: 100%;
+        }
+
+        .context-menu {
+            position: fixed;
+            background-color: #2d2d2d;
+            border: 1px solid #3d3d3d;
+            padding: 5px 0;
+            display: none;
+        }
+
+        .context-menu-item {
+            padding: 5px 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .context-menu-item:hover {
+            background-color: #3d3d3d;
+        }
+
+        .preview-panel {
+            width: 0;
+            background-color: #1e1e1e;
+            position: relative;
+            transition: opacity 0.3s, visibility 0.3s;
+            visibility: hidden;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .preview-panel.active {
+            visibility: visible;
+            opacity: 1;
+            width: 400px;
+        }
+
+        .preview-header {
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #3d3d3d;
+            background-color: #2d2d2d;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .resize-handle-left {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: ew-resize;
+            background-color: #3d3d3d;
+            z-index: 10;
+        }
+
+        .resize-handle-left:hover {
+            background-color: #0078d4;
+        }
+
+        .user-menu {
+            position: relative;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .user-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .user-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .user-dropdown.show {
+            display: block;
+        }
+
+        .user-dropdown a {
+            display: block;
+            padding: 8px 16px;
+            color: #333;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .user-dropdown a:hover {
+            background: #f5f5f5;
+        }
+
+        .logout-item {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <script src="./js/common.js"></script>
+    <script src="./js/User.js"></script>
+    
+    
+    <div class="toolbar">
+        <button id="toggle-sidebar">
+            <i class="fas fa-list"></i>
+        </button>
+        <div class="project-controls">
+            <select class="project-select" id="project-select">
+                <option value="">Select Project</option>
+            </select>
+            <button class="icon-button" id="new-project" title="New Project">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+            <button class="icon-button" id="delete-project" title="Delete Project">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+        <select id="language-select">
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="json">JSON</option>
+            <option value="python">Python</option>
+        </select>
+        <select id="theme-select">
+            <option value="vs-dark">Dark</option>
+            <option value="vs">Light</option>
+            <option value="hc-black">High Contrast Dark</option>
+        </select>
+        <button id="download-project">
+            <i class="fas fa-download"></i> Download Project
+        </button>
+        <div id="google-login-button"></div>
+        <div class="spacer"></div>
+        <div class="user-menu">
+            <button class="user-button">
+                <img class="user-avatar" src="" alt="User avatar">
+            </button>
+            <div class="user-dropdown">
+                <a href="/dashboard">Dashboard</a>
+                <a href="#" class="logout-item">Logout</a>
+            </div>
+        </div>
+        <button class="icon-button" id="toggle-preview" title="Toggle Preview">
+            <i class="fas fa-eye"></i>
+        </button>
+    </div>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="resize-handle"></div>
+            <div class="sidebar-header">
+                <span>FILES</span>
+                <div class="sidebar-toolbar">
+                    <button id="new-file" title="New File">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button id="new-folder" title="New Folder">
+                        <i class="fas fa-folder-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="file-tree">
+                <div id="file-tree-content"></div>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div id="monaco-editor"></div>
+        </div>
+
+        <div class="preview-panel">
+            <div class="resize-handle-left"></div>
+            <div class="preview-header">
+                <span>PREVIEW</span>
+                <button class="icon-button" id="refresh-preview" title="Refresh Preview">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="preview-content">
+                <iframe id="preview-frame" class="preview-frame"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <div class="context-menu" id="context-menu">
+        <div class="context-menu-item" data-action="rename">Rename</div>
+        <div class="context-menu-item" data-action="delete">Delete</div>
+    </div>
+    
+    <script>
+        // 프리뷰 패널 리사이즈 기능 설정
+        const previewPanel = document.querySelector('.preview-panel');
+        const previewResizeHandle = document.querySelector('.resize-handle-left');
+        let isResizingPreview = false;
+        let previewStartX;
+        let previewStartWidth;
+
+        previewResizeHandle.addEventListener('mousedown', (e) => {
+            if (!previewPanel.classList.contains('active')) return;
+            
+            isResizingPreview = true;
+            previewStartX = e.clientX;
+            previewStartWidth = parseInt(getComputedStyle(previewPanel).width, 10);
+            document.body.style.cursor = 'ew-resize';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizingPreview) return;
+            
+            const width = previewStartWidth - (e.clientX - previewStartX);
+            if (width >= 200 && width <= 800) {
+                previewPanel.style.width = width + 'px';
+                previewPanel.style.transition = 'none';  // 드래그 중에는 트랜지션 효과 제거
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizingPreview) {
+                isResizingPreview = false;
+                document.body.style.cursor = '';
+                previewPanel.style.transition = 'opacity 0.3s, visibility 0.3s';  // 트랜지션 효과 복원
+            }
+        });
+    </script>
+    <script src="./js/editor.js"></script>
+    <script src="./db/googleLogin.js"></script>
+    
+</body>
+</html>

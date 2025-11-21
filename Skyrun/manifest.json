@@ -1,0 +1,51 @@
+{
+    "name": "Sky Run – Geometry Jump",
+    "short_name": "Sky Run",
+    "description": "From tiny hops to daring stunts, Claire's journey never stops. Help Claire rescue the prince in this thrilling platformer with twisting, spinning platforms.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1f2937",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["games", "entertainment"],
+    "icons": [
+        {
+            "src": "favicon.jpg",
+            "sizes": "512x512",
+            "type": "image/webp",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "https://hwanmailing.github.io/resources/images/jumpClaire1.webp",
+            "sizes": "1280x720",
+            "type": "image/webp",
+            "form_factor": "wide",
+            "label": "Sky Run Gameplay Screenshot"
+        },
+        {
+            "src": "https://hwanmailing.github.io/resources/images/jumpClaire2.webp",
+            "sizes": "1280x720",
+            "type": "image/webp",
+            "form_factor": "wide",
+            "label": "Dynamic Moving Platforms"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Play Game",
+            "short_name": "Play",
+            "description": "Start playing Sky Run",
+            "url": "/#download",
+            "icons": [
+                {
+                    "src": "favicon.jpg",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}
