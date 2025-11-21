@@ -130,7 +130,9 @@ $(document).ready(function () {
             name: $('#name').val().trim(),
             email: $('#email').val().trim(),
             phone: $('#phone').val().trim(),
-            message: $('#message').val().trim()
+            message: $('#message').val().trim(),
+            website: 'Retro Block Puzzle – Wood Block Classic',
+            url: window.location.href
         };
 
         // Validation

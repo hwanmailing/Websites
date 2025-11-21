@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover our collection of exciting mobile games - from classic Minesweeper to thrilling platformers and puzzle games!">
+    <meta name="keywords" content="games, mobile games, puzzle, minesweeper, tetris, platformer, casual games">
+
+    <title>Best Mobile Games - Mobile Games Collection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">Best Mobile Games</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Best Mobile Games</h1>
+            <p class="hero-subtitle">Discover Our Collection of Exciting Mobile Games</p>
+            <p class="hero-description">
+                From classic puzzles to thrilling platformers, explore our diverse collection of mobile games designed
+                for fun and challenge!
+            </p>
+            <div class="hero-buttons">
+                <a href="#games" class="btn btn-primary">Explore Games</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Our Games</h2>
+                <p class="section-subtitle">
+                    We create engaging mobile games that combine classic gameplay with modern design
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <div class="about-icon">🎯</div>
+                    <h3>Quality First</h3>
+                    <p>Every game is crafted with attention to detail, smooth performance, and engaging gameplay.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <div class="about-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Vibrant colors, modern aesthetics, and intuitive interfaces that players love.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <div class="about-icon">📱</div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Perfectly adapted for mobile devices with responsive controls and layouts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Best Mobile Games</h2>
+                <p class="section-subtitle">
+                    Choose your adventure from our collection of exciting mobile games
+                </p>
+            </div>
+            <div class="games-grid">
+                <!-- Minesweeper Classic Bomb Plus -->
+                <div class="game-card fade-in" data-theme="minesweeper">
+                    <div class="game-card-inner">
+                        <div class="game-icon">
+                            <img src="./Minesweeper/resources/images/icon.jpg" alt="Minesweeper Classic Bomb Plus Icon">
+                        </div>
+                        <h2 class="game-title">Minesweeper Classic Bomb Plus</h2>
+                        <p class="game-description">
+                            Experience a colorful new twist on classic Minesweeper with dynamic mobile grids and story
+                            quests!
+                        </p>
+                        <div class="game-tags">
+                            <span class="tag">Puzzle</span>
+                            <span class="tag">Logic</span>
+                            <span class="tag">Classic</span>
+                        </div>
+                        <a href="./Minesweeper/index.html" class="game-link">
+                            <span>Play Now</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sky Run – Geometry Jump -->
+                <div class="game-card fade-in" data-theme="skyrun">
+                    <div class="game-card-inner">
+                        <div class="game-icon">
+                            <img src="./Skyrun/resources/images/icon.jpg" alt="Sky Run Icon">
+                        </div>
+                        <h2 class="game-title">Sky Run – Geometry Jump</h2>
+                        <p class="game-description">
+                            Jump, dash, and conquer twisting platforms in this thrilling geometry-based platformer
+                            adventure!
+                        </p>
+                        <div class="game-tags">
+                            <span class="tag">Platformer</span>
+                            <span class="tag">Action</span>
+                            <span class="tag">Arcade</span>
+                        </div>
+                        <a href="./Skyrun/index.html" class="game-link">
+                            <span>Play Now</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Retro Block Puzzle Classic -->
+                <div class="game-card fade-in" data-theme="woodblock">
+                    <div class="game-card-inner">
+                        <div class="game-icon">
+                            <img src="./WoodBlockPuzzle/resources/images/icon.jpg" alt="Retro Block Puzzle Icon">
+                        </div>
+                        <h2 class="game-title">Retro Block Puzzle Classic</h2>
+                        <p class="game-description">
+                            Drop and blast wooden cubes in this cozy block puzzle with warm wooden style and gentle
+                            challenge!
+                        </p>
+                        <div class="game-tags">
+                            <span class="tag">Puzzle</span>
+                            <span class="tag">Casual</span>
+                            <span class="tag">Relaxing</span>
+                        </div>
+                        <a href="./WoodBlockPuzzle/index.html" class="game-link">
+                            <span>Play Now</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BrickStack Classic -->
+                <div class="game-card fade-in" data-theme="brickstack">
+                    <div class="game-card-inner">
+                        <div class="game-icon">
+                            <img src="./BrickStackClassic/resources/images/icon.jpg" alt="BrickStack Classic Icon">
+                        </div>
+                        <h2 class="game-title">BrickStack Classic</h2>
+                        <p class="game-description">
+                            Stack colorful Tetris blocks, clear lines, and conquer endless challenges in this vibrant
+                            puzzle game!
+                        </p>
+                        <div class="game-tags">
+                            <span class="tag">Tetris</span>
+                            <span class="tag">Puzzle</span>
+                            <span class="tag">Arcade</span>
+                        </div>
+                        <a href="./BrickStackClassic/index.html" class="game-link">
+                            <span>Play Now</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">
+                    Have questions or feedback? We'd love to hear from you!
+                </p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required
+                        placeholder="Tell us what's on your mind..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-title">
+                        <span class="logo-icon">🎮</span>
+                        Best Mobile Games
+                    </h3>
+                    <p class="footer-description">
+                        Creating engaging mobile games that combine classic gameplay with modern design.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Games</h4>
+                    <ul class="footer-links">
+                        <li><a href="./Minesweeper/index.html">Minesweeper Classic</a></li>
+                        <li><a href="./Skyrun/index.html">Sky Run</a></li>
+                        <li><a href="./WoodBlockPuzzle/index.html">Block Puzzle</a></li>
+                        <li><a href="./BrickStackClassic/index.html">BrickStack</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="#0a0e27"
+                                    stroke-width="2" />
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="#0a0e27" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Best Mobile Games. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

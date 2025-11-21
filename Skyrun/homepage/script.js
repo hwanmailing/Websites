@@ -130,7 +130,9 @@ $(document).ready(function () {
             name: $('#name').val().trim(),
             email: $('#email').val().trim(),
             phone: $('#phone').val().trim(),
-            message: $('#message').val().trim()
+            message: $('#message').val().trim(),
+            website: 'Sky Run – Geometry Jump',
+            url: window.location.href
         };
 
         // Validation
