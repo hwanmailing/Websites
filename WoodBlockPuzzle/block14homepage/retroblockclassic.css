@@ -2,12 +2,12 @@
 
 /* Wood Background Pattern */
 .wood-background {
-    background: url('https://hwanmailing.github.io/resources/images/background.jpg') center/cover;
+    background: url('./resources/images/background.jpg') center/cover;
     background-attachment: fixed;
 }
 
 .wood-panel {
-    background: url('https://hwanmailing.github.io/resources/images/flatwood.jpg') center/cover;
+    background: url('./resources/images/flatwood.jpg') center/cover;
     border: 3px solid #654321;
     border-radius: 15px;
     box-shadow: 
@@ -17,7 +17,7 @@
 }
 
 .wood-button {
-    background: url('https://hwanmailing.github.io/resources/images/flatwood.jpg') center/cover;
+    background: url('./resources/images/flatwood.jpg') center/cover;
     border: 2px solid #654321;
     border-radius: 8px;
     color: #DEB887;
@@ -55,7 +55,7 @@
 }
 
 .wood-text-fill {
-    background: url('https://hwanmailing.github.io/resources/images/flatwood.jpg') center/cover;
+    background: url('./resources/images/flatwood.jpg') center/cover;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -107,13 +107,13 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: url('https://hwanmailing.github.io/resources/images/flatwood.jpg') center/cover;
+    background: url('./resources/images/flatwood.jpg') center/cover;
     border: 2px solid #654321;
     border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: url('https://hwanmailing.github.io/resources/images/flatwood.jpg') center/cover;
+    background: url('./resources/images/flatwood.jpg') center/cover;
     border: 2px solid #654321;
     border-radius: 8px;
     box-shadow: 

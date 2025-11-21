@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     characterSprites.forEach((sprite, index) => {
         const spriteUrl = sprite.getAttribute('data-sprite');
-        const fullUrl = `https://hwanmailing.github.io/resources/Sprites/${spriteUrl}`;
+        const fullUrl = `./resources/Sprites/${spriteUrl}`;
         
         // Character 인스턴스 생성
         const character = new Character(
