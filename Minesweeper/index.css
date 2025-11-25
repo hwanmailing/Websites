@@ -14,15 +14,15 @@
     /* Color Palette */
     --primary-red: #dc2f2c;
     --dark-brown: #743d29;
-    --ivory: #c39b5e;
+    --ivory: #ffd976;
 
     /* Color Variations */
     --red-dark: #b32522;
     --red-light: #e85855;
     --brown-dark: #5a2f1f;
     --brown-light: #8f4d35;
-    --ivory-light: #d4b07a;
-    --ivory-dark: #a88449;
+    --ivory-light: #ffe89a;
+    --ivory-dark: #ffca52;
 
     /* Neutral Colors */
     --white: #ffffff;
@@ -220,7 +220,7 @@ p {
     right: 0;
     bottom: 0;
     background:
-        radial-gradient(circle at 20% 50%, rgba(195, 155, 94, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 20% 50%, rgba(255, 217, 118, 0.2) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(220, 47, 44, 0.3) 0%, transparent 50%);
     animation: pulse 8s ease-in-out infinite;
 }
@@ -355,6 +355,7 @@ section {
     color: var(--dark-brown);
     position: relative;
     display: inline-block;
+    margin-top: 100px;
 }
 
 .section-title::after {
@@ -469,7 +470,7 @@ section {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: var(--spacing-md);
     margin-top: var(--spacing-lg);
 }
@@ -628,7 +629,7 @@ section {
     outline: none;
     border-color: var(--ivory);
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(195, 155, 94, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 217, 118, 0.2);
 }
 
 .form-group textarea {
@@ -770,7 +771,7 @@ section {
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .cta-buttons {
@@ -797,6 +798,10 @@ section {
     .hero-icon {
         width: 80px;
         height: 80px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
