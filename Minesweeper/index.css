@@ -477,15 +477,19 @@ section {
 
 .gallery-item {
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
     cursor: pointer;
     transition: all var(--transition-normal);
+    /* iPhone-style border */
+    padding: clamp(2px, 0.5vw, 5px);
+    background: #fe9679;
+    border: 1px solid #fe9679;
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: var(--shadow-xl);
 }
 
@@ -495,10 +499,13 @@ section {
     object-fit: cover;
     display: block;
     transition: transform var(--transition-slow);
+    border-radius: 6px;
+    position: relative;
+    z-index: 1;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .gallery-overlay {
