@@ -1,0 +1,272 @@
+/* Retro Block Classic - Custom Styles */
+
+/* Wood Background Pattern */
+.wood-background {
+    background: url('./resources/images/background.jpg') center/cover;
+    background-attachment: fixed;
+}
+
+.wood-panel {
+    background: url('./resources/images/flatwood.jpg') center/cover;
+    border: 3px solid #654321;
+    border-radius: 15px;
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.wood-button {
+    background: url('./resources/images/flatwood.jpg') center/cover;
+    border: 2px solid #654321;
+    border-radius: 8px;
+    color: #DEB887;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.wood-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Wood Text Styles */
+.wood-text {
+    color: #8B4513;
+    text-shadow: 
+        2px 2px 0px #654321,
+        1px 1px 0px #DEB887,
+        0px 0px 4px rgba(139, 69, 19, 0.3);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.wood-text-stroke {
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff99;
+    text-shadow: 2px 2px 4px #00000077, -1px -1px 2px #ffffff55;
+}
+
+.wood-text-fill {
+    background: url('./resources/images/flatwood.jpg') center/cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fallback for older browsers */
+@supports not (background-clip: text) {
+    .wood-text {
+        background: none;
+        -webkit-text-fill-color: initial;
+        text-fill-color: initial;
+        color: #8B4513;
+    }
+}
+
+/* Rounded Icon Styles */
+.rounded-icon {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3), inset 0 1px 0 rgba(222, 184, 135, 0.3);
+}
+
+.rounded-icon img {
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.rounded-icon:hover img {
+    transform: scale(1.05);
+}
+
+/* App Icon Rounded */
+.app-icon-rounded {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Favicon Rounded */
+.favicon-rounded {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Wood Scrollbar */
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: url('./resources/images/flatwood.jpg') center/cover;
+    border: 2px solid #654321;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: url('./resources/images/flatwood.jpg') center/cover;
+    border: 2px solid #654321;
+    border-radius: 8px;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(145deg, #D2691E 0%, #8B4513 100%);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(145deg, #8B4513 0%, #654321 100%);
+}
+
+/* Firefox Scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #8B4513 #DEB887;
+    scroll-behavior: smooth;
+}
+
+/* New Game Preview Slider */
+.game-preview-slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-track {
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 8px;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #8B4513;
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-preview-slider {
+        height: 500px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-preview-slider {
+        height: 400px;
+    }
+    
+    .nav-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+}
